@@ -1,7 +1,8 @@
 import tkinter as tk
 import random
 from pathlib import Path
-from typing import Tuple
+from tkinter import PhotoImage
+from typing import Tuple, Any
 
 from stone_scissors_paper.enums.Items import Items
 from stone_scissors_paper.enums.result_colors import ResultColors
@@ -88,7 +89,8 @@ class RockPaperScissorsApp(tk.Tk):
         self.result_label.config(text=result_text, bg=color)
         self.computer_image_label.config(image=computer_image)
 
-    def _decide_outcome(self, user_choice: Items, computer_choice: Items) -> Tuple[str, tk.PhotoImage, ResultColors]:
+    def _decide_outcome(self, user_choice: Items, computer_choice: Items) -> tuple[Any, PhotoImage, ResultColors] | \
+                                                                             tuple[str, PhotoImage]:
         if user_choice == computer_choice:
             return en["tie"], self._image_for_choice(computer_choice), ResultColors.YELLOW
 
